@@ -50,128 +50,140 @@
             <details>
                 <summary>Java Example</summary>
                 <pre>
-                /**
-                 * Exercise 3: Sort the product list
-                 *
-                 * Requirement
-                 *      * Sort product list by 'product name' in reverse alphabetical order
-                 *      * Exclude all 'null' product names
-                 *      * Print out the sorted list (you can call product.toString())
-                 */
-                @Test
-                    public void solution3() {
-                        products.stream()
-                                .filter(product -> product.getName()!= null)
-                                .sorted(Comparator.comparing(Product::getPrice).reversed())
-                                .forEach(System.out::println);
-                }
+/**
+ * Exercise 3: Sort the product list
+ *
+ * Requirement
+ *      * Sort product list by 'product name' in reverse alphabetical order
+ *      * Exclude all 'null' product names
+ *      * Print out the sorted list (you can call product.toString())
+ */
+@Test
+    public void solution3() {
+        products.stream()
+                .filter(product -> product.getName()!= null)
+                .sorted(Comparator.comparing(Product::getPrice).reversed())
+                .forEach(System.out::println);
+}
                 </pre>
             </details>
             <details>
                 <summary>JS Example</summary>
                 <pre>
-                    function formv3(){
-                        var xhr = new XMLHttpRequest();
-                        var url = 'https://api.hsforms.com/submissions/v3/integration/submit/hubNumber/formNumber';
-                       
-                        var data = {
-                          "submittedAt": $.now(),
-                          "fields": [
-                            {
-                              "name": "firstname",
-                              "value": $('input[name="name"]').val()
-                            },
-                            {
-                              "name": "company",
-                              "value": $('input[name="company"]').val()
-                            },
-                            {
-                              "name": "email",
-                              "value": $('input[name="email"]').val()
-                            },
-                            {
-                              "name": "product_name",
-                              "value": $('input[name="product"]').val()
-                            },
-                            {
-                              "name": "qa_specialists_ballpark_estimates",
-                              "value": $('select[name="ballpark"]').val()
-                            },
-                            {
-                              "name": "your_software_product_overview",
-                              "value": $('input[name="overview"]').val()
-                            }
-                          ],
-                          "context": {
-                            "pageUri": window.location.href,
-                            "pageName": document.title
-                          },
-                          "legalConsentOptions":{
-                            "consent":{
-                              "consentToProcess": $("#gdpr").val(),
-                              "text": $('.legal-data-text').text(),
-                              "communications":[
-                                {
-                                  "value": $("#communication").val(),
-                                  "subscriptionTypeId": subscriptionNumber,
-                                  "text": $('.legal-com-text').text()
-                                }
-                              ]
-                            }
-                          }
-                        }
+function formv3(){
+    var xhr = new XMLHttpRequest();
+    var url = 'https://api.hsforms.com/submissions/v3/integration/submit/hubNumber/formNumber';
+   
+    var data = {
+      "submittedAt": $.now(),
+      "fields": [
+        {
+          "name": "firstname",
+          "value": $('input[name="name"]').val()
+        },
+        {
+          "name": "company",
+          "value": $('input[name="company"]').val()
+        },
+        {
+          "name": "email",
+          "value": $('input[name="email"]').val()
+        },
+        {
+          "name": "product_name",
+          "value": $('input[name="product"]').val()
+        },
+        {
+          "name": "qa_specialists_ballpark_estimates",
+          "value": $('select[name="ballpark"]').val()
+        },
+        {
+          "name": "your_software_product_overview",
+          "value": $('input[name="overview"]').val()
+        }
+      ],
+      "context": {
+        "pageUri": window.location.href,
+        "pageName": document.title
+      },
+      "legalConsentOptions":{
+        "consent":{
+          "consentToProcess": $("#gdpr").val(),
+          "text": $('.legal-data-text').text(),
+          "communications":[
+            {
+              "value": $("#communication").val(),
+              "subscriptionTypeId": subscriptionNumber,
+              "text": $('.legal-com-text').text()
+            }
+          ]
+        }
+      }
+    }
 
-                        var final_data = JSON.stringify(data)
+    var final_data = JSON.stringify(data)
 
-                        xhr.open('POST', url);
-                        xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
-                        xhr.onreadystatechange = function() {
-                            if(xhr.readyState == 4 && xhr.status == 200) { 
-                                $('#form-msg').append('Thank you for filling out your information. Our expert will be back to you in the shortest possible time to discuss the details.');
-                                clearFields();
-                            } else if (xhr.readyState == 4 && xhr.status == 400){ 
-                                $('#error').html('It looks like something went wrong. Please check the submitted data once again.');          
-                            } else if (xhr.readyState == 4 && xhr.status == 403){ 
-                                alert(xhr.responseText); // Returns a 403 error  submissions.           
-                            } else if (xhr.readyState == 4 && xhr.status == 404){ 
-                                alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found     
-                            }
-                           }   
-                        xhr.send(final_data)
-                    }   
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200) { 
+            $('#form-msg').append('Thank you for filling out your information.
+            Our expert will be back to you in the shortest possible time to discuss the details.');
+            clearFields();
+        } else if (xhr.readyState == 4 && xhr.status == 400){ 
+            $('#error').html('It looks like something went wrong. Please check the submitted data once again.');          
+        } else if (xhr.readyState == 4 && xhr.status == 403){ 
+            alert(xhr.responseText); // Returns a 403 error  submissions.           
+        } else if (xhr.readyState == 4 && xhr.status == 404){ 
+            alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found     
+        }
+       }   
+    xhr.send(final_data)
+}   
                 </pre>
             </details>
             <details>
                 <summary>PHP Example</summary>
                 <pre>
-                <?php
-                    $name=$_POST['name'];
-                    $company=$_POST['company'];
-                    $product=$_POST['product'];
-                    $email=$_POST['email'];
+&lt?php
+    $name=$_POST['name'];
+    $company=$_POST['company'];
+    $product=$_POST['product'];
+    $email=$_POST['email'];
 
-                    $ballpark=$_POST['ballpark'];
-                    $overview=$_POST['overview'];
-                    $qa_challenge=$_POST['qa_challenge'];
+    $ballpark=$_POST['ballpark'];
+    $overview=$_POST['overview'];
+    $qa_challenge=$_POST['qa_challenge'];
 
-                    $qa_team=$_POST['qa_team'];
-                    $toolkit=$_POST['toolkit'];
-                    $comment=$_POST['comment'];
+    $qa_team=$_POST['qa_team'];
+    $toolkit=$_POST['toolkit'];
+    $comment=$_POST['comment'];
 
-                    $gdpr=$_POST['gdpr'];
+    $gdpr=$_POST['gdpr'];
 
-                    $emailTo = 'someemail@test.mail'; 
-                    $body = "Name: $name \n\nCompany: $company \n\nProduct name: $product \n\nEmail: $email \n\nQA specialists’ ballpark estimates: $ballpark \n\nYour software product overview: $overview \n\nQA challenges to focus on: $qa_challenge \n\nIn-house QA team: $qa_team \n\nProgramming language and toolkit: $toolkit \n\nComment: $comment \n\nGDPR: $gdpr \n\n";
-                    $subject = 'Test automation free POC';
-                    $headers = "From: Test automation free POC Landing Page <mail@mail.com> \r\nContent-type: text/plain; charset=utf-8 \r\n";
+    $emailTo = 'someemail@test.mail'; 
+    $body = "Name: $name \n\n
+    Company: $company \n\n
+    Product name: $product \n\n
+    Email: $email \n\n
+    QA specialists’ ballpark estimates: $ballpark \n\n
+    Your software product overview: $overview \n\n
+    QA challenges to focus on: $qa_challenge \n\n
+    In-house QA team: $qa_team \n\n
+    Programming language and toolkit: $toolkit \n\n
+    Comment: $comment \n\n
+    GDPR: $gdpr \n\n";
+    $subject = 'Test automation free POC';
+    $headers = "From: Test automation free POC Landing Page <mail@mail.com> \r\nContent-type: text/plain; charset=utf-8 \r\n";
 
-                    if(mail($emailTo, $subject, $body, $headers)){
-                    echo "<span>Thank you for filling out your information. Our expert will be back to you in the shortest possible time to discuss the details.</span>";
-                    } else {
-                    echo "<span>Woops, something goes wrong, please check your data.</span>";   
-                    };      
-                ?>    
+    if(mail($emailTo, $subject, $body, $headers)){
+    echo "<span>Thank you for filling out your information. 
+    Our expert will be back to you in the shortest possible time to discuss the details.</span>";
+    } else {
+    echo "<span>Woops, something goes wrong, please check your data.</span>";   
+    };      
+?&gt    
                 </pre>
             </details>
 
@@ -183,7 +195,7 @@
             <br>  
             Bachelor's degree (2013-2017)</p>
             <h3>Cources and Certificates:</h3>
-            <ul>
+            <ul class="edu-cources">
                 <li>SAFe Practitioner Certification</li>
                 <li>SQL Advanced</li>
                 <li>Life &amp; Time management</li>
