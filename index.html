@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hanna Malashenka CV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <img class="profile-photo" src="hanna.jpg" alt="Hanna">
+            <h1 class="name">Hanna Malashenka</h1>
+        </header>
+        <div class="contact-info">
+            <h2>Contact Info</h2>
+            <ul class="contact-list">
+                <li><img src="https://img.icons8.com/android/48/000000/worldwide-location.png" alt="Location"> Minsk, Belarus </li>
+                <li><img src="https://img.icons8.com/fluent-systems-regular/48/000000/phone.png" alt="Mobile Phone"> +37529 377 76 75</li>
+                <li><a href="https://www.linkedin.com/in/hanna-malashenka/"><img src="https://img.icons8.com/fluent/48/000000/linkedin.png" alt="Linkedin">Hanna Malashenka</a></li>
+                <li><a href="https://github.com/HannaMalashenka"><img src="https://img.icons8.com/fluent/48/000000/github.png" alt="GitHub">hannamalashenka</a></li>
+            </ul>
+        </div>
+        <div class="about">
+            <h2>About</h2>
+            <p>A specialist with versatile experience, 5 years in IT industry in QA sphere:</p>
+                <ul>
+                    <li>Manual testing of a complex buisness solutions (Ad Platform, Cloud Data Migration, Tax app, etc);</li>
+                    <li>Automated testing for API and Web app (end-to-end) - C#, Java, Selenium, NUnit, Specflow, etc;</li>
+                    <li>QA Team management (4 engineers);</li>
+                    <li>Launched internal cources ‘Networks for QA’ for company trainees;</li>
+                    <li>Landing pages creation for company events and Marketing department needs (Wordpress, HTML, CSS, JS, PHP);</li>
+                    <li>Sales assistance in Pre-Sales department;</li>
+                    <li>Won ‘Universal Player’ nomination last year.</li>
+                </ul>
+            <p>I always aim to self-develop, be a so called T-shaped specialist. Right now my goal is to skill up in front-end development and choose grouth vector for the next couple of years.</p>
+        </div>
+        <div class="skills">
+            <h2>Skills</h2>
+            <p><strong>Languages</strong>: C#, Java, SQL, HTML, JS, PHP;</p>
+
+            <p><strong>Tools</strong>: Postman, Fiddler, Swagger, Putty, Git, AWS, VirtualBox;</p>
+
+            <p><strong>Task-tracking</strong>: Jira, Rally, Trello;</p>
+
+            <p><strong>CI/CD</strong>: TFS, Azure, Jenkins.</p>
+        </div>
+        <div class="code-examples">
+            <h2>Code examples</h2>
+            <details>
+                <summary>Java Example</summary>
+                <pre>
+                /**
+                 * Exercise 3: Sort the product list
+                 *
+                 * Requirement
+                 *      * Sort product list by 'product name' in reverse alphabetical order
+                 *      * Exclude all 'null' product names
+                 *      * Print out the sorted list (you can call product.toString())
+                 */
+                @Test
+                    public void solution3() {
+                        products.stream()
+                                .filter(product -> product.getName()!= null)
+                                .sorted(Comparator.comparing(Product::getPrice).reversed())
+                                .forEach(System.out::println);
+                }
+                </pre>
+            </details>
+            <details>
+                <summary>JS Example</summary>
+                <pre>
+                    function formv3(){
+                        var xhr = new XMLHttpRequest();
+                        var url = 'https://api.hsforms.com/submissions/v3/integration/submit/hubNumber/formNumber';
+                       
+                        var data = {
+                          "submittedAt": $.now(),
+                          "fields": [
+                            {
+                              "name": "firstname",
+                              "value": $('input[name="name"]').val()
+                            },
+                            {
+                              "name": "company",
+                              "value": $('input[name="company"]').val()
+                            },
+                            {
+                              "name": "email",
+                              "value": $('input[name="email"]').val()
+                            },
+                            {
+                              "name": "product_name",
+                              "value": $('input[name="product"]').val()
+                            },
+                            {
+                              "name": "qa_specialists_ballpark_estimates",
+                              "value": $('select[name="ballpark"]').val()
+                            },
+                            {
+                              "name": "your_software_product_overview",
+                              "value": $('input[name="overview"]').val()
+                            }
+                          ],
+                          "context": {
+                            "pageUri": window.location.href,
+                            "pageName": document.title
+                          },
+                          "legalConsentOptions":{
+                            "consent":{
+                              "consentToProcess": $("#gdpr").val(),
+                              "text": $('.legal-data-text').text(),
+                              "communications":[
+                                {
+                                  "value": $("#communication").val(),
+                                  "subscriptionTypeId": subscriptionNumber,
+                                  "text": $('.legal-com-text').text()
+                                }
+                              ]
+                            }
+                          }
+                        }
+
+                        var final_data = JSON.stringify(data)
+
+                        xhr.open('POST', url);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+
+                        xhr.onreadystatechange = function() {
+                            if(xhr.readyState == 4 && xhr.status == 200) { 
+                                $('#form-msg').append('Thank you for filling out your information. Our expert will be back to you in the shortest possible time to discuss the details.');
+                                clearFields();
+                            } else if (xhr.readyState == 4 && xhr.status == 400){ 
+                                $('#error').html('It looks like something went wrong. Please check the submitted data once again.');          
+                            } else if (xhr.readyState == 4 && xhr.status == 403){ 
+                                alert(xhr.responseText); // Returns a 403 error  submissions.           
+                            } else if (xhr.readyState == 4 && xhr.status == 404){ 
+                                alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found     
+                            }
+                           }   
+                        xhr.send(final_data)
+                    }   
+                </pre>
+            </details>
+            <details>
+                <summary>PHP Example</summary>
+                <pre>
+                <?php
+                    $name=$_POST['name'];
+                    $company=$_POST['company'];
+                    $product=$_POST['product'];
+                    $email=$_POST['email'];
+
+                    $ballpark=$_POST['ballpark'];
+                    $overview=$_POST['overview'];
+                    $qa_challenge=$_POST['qa_challenge'];
+
+                    $qa_team=$_POST['qa_team'];
+                    $toolkit=$_POST['toolkit'];
+                    $comment=$_POST['comment'];
+
+                    $gdpr=$_POST['gdpr'];
+
+                    $emailTo = 'someemail@test.mail'; 
+                    $body = "Name: $name \n\nCompany: $company \n\nProduct name: $product \n\nEmail: $email \n\nQA specialists’ ballpark estimates: $ballpark \n\nYour software product overview: $overview \n\nQA challenges to focus on: $qa_challenge \n\nIn-house QA team: $qa_team \n\nProgramming language and toolkit: $toolkit \n\nComment: $comment \n\nGDPR: $gdpr \n\n";
+                    $subject = 'Test automation free POC';
+                    $headers = "From: Test automation free POC Landing Page <mail@mail.com> \r\nContent-type: text/plain; charset=utf-8 \r\n";
+
+                    if(mail($emailTo, $subject, $body, $headers)){
+                    echo "<span>Thank you for filling out your information. Our expert will be back to you in the shortest possible time to discuss the details.</span>";
+                    } else {
+                    echo "<span>Woops, something goes wrong, please check your data.</span>";   
+                    };      
+                ?>    
+                </pre>
+            </details>
+
+        </div>
+        <div class="education">
+            <h2>Education</h2>
+            <h3>University:</h3>
+            <p>Belarusian State University, FAMCS
+            <br>  
+            Bachelor's degree (2013-2017)</p>
+            <h3>Cources and Certificates:</h3>
+            <ul>
+                <li>SAFe Practitioner Certification</li>
+                <li>SQL Advanced</li>
+                <li>Life &amp; Time management</li>
+                <li>Training for Trainers</li>
+                <li>Business English</li>
+            </ul>
+        </div>
+        <div class="languages">
+            <h2>Languages</h2>
+            <ul class="languages-list">
+                <li class="language-list-item">English: <span class="language-level">B2</span></li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
