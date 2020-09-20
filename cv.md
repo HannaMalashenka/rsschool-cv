@@ -1,8 +1,8 @@
 # Hanna Malashenka
 ## Contact Info
-![Location](https://img.icons8.com/android/48/000000/worldwide-location.png) Minsk, Belarus
+![Location](https://img.icons8.com/android/48/000000/worldwide-location.png) __Minsk, Belarus__
 
-![Mobile Phone](https://img.icons8.com/fluent-systems-regular/48/000000/phone.png) +37529 377 76 75
+![Mobile Phone](https://img.icons8.com/fluent-systems-regular/48/000000/phone.png) __+37529 377 76 75__
 
 [![Linkedin](https://img.icons8.com/fluent/48/000000/linkedin.png) Hanna Malashenka](https://www.linkedin.com/in/hanna-malashenka/)
 
